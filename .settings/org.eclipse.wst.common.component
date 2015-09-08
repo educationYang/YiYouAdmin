@@ -3,7 +3,6 @@
     <wb-module deploy-name="StoreAdmin">
         <wb-resource deploy-path="/" source-path="/web"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/common"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/selftest"/>
         <property name="context-root" value="/StoreAdmin"/>

@@ -8,7 +8,7 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" default-lazy-init="true">
-	<!-- 产品导入映射配置 -->
+	<!--   产品导入映射配置 -->
 	<bean id="productImportConfig" class="com.cartmatic.estore.imports.model.ImportMappingConfig" scope="prototype">
 		<property name="target" value="com.cartmatic.estore.common.model.catalog.Product" />
 		<property name="persistenceHandler" ref="productPersistenceHandler" />

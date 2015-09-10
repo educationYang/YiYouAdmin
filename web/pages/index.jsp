@@ -6,15 +6,17 @@
 <div class="blank24"></div>
 <div class="stat">
     <div id="container">
-	    <div id="orderDashboardContent"></div>
-        <div id="productReviewDashboardContent"></div>
+	    <div id=""> </div>
+        <%--<div id="productReviewDashboardContent"></div>
         <div id="feedbacksDashboardContent"></div>
 		<div id="customerDashboardContent"></div>
 		<div id="inventoryDashboardContent"></div>
 		<div id="catalogDashboardContent"></div>
 		<div id="salesPromotionDashboardContent"></div>
+--%></div>
 </div>
-</div>
+
+<!-- 
 <script type="text/javascript" defer>
 	function fnLast7DayOrderCreated(){
 		$j.getJSON(__ctxPath+"/order/last7DayOrderCreated/dashboard.html",function (result){
@@ -91,3 +93,5 @@
 		fnHideLoading();
 	});
 </script>
+
+-->

@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ include file="/common/taglibs.jsp"%>
-<i18n:msg expr="$[webapp.softwareInfo]" />&nbsp;<i18n:msg expr="$[webapp.copyrightInfo]" />
+
 <script type="text/javaScript" defer>
 	<%--//常用搜索条初始化
 	var comSrhUrls = new Array();

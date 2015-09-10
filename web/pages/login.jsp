@@ -92,7 +92,7 @@
 <body>
 <c:set var="maxFailTimes" value="${applicationScope.appConfig.maxLoginFailTimes}" scope="page"/>
 <form class="loginForm" method="post" name="loginForm" id="loginForm" action="${ctxPath}/j_security_check"
-	onsubmit="return __validateForm(this)">
+	onsubmit="return __validateForm(this)" >
 <div class="login-wrap">
     <div class="login-header"></div>
         <div class="login-content">
@@ -159,7 +159,6 @@
 		resetForm();
 	</script>
 </form>
-<center><a href="http://192.168.1.191">名度OA管理系统</a></center>
 
 </body>
 </html>

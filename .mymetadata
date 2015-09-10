@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="YiYouAdmin"
+  name="yiyouAdmin"
   id="myeclipse.1166576035421"
-  context-root="/StoreAdmin"
+  context-root="/yiyouAdmin"
   j2ee-spec="1.4"
-  archive="YiYouAdmin.war">
+  archive="yiyouAdmin.war">
   <attributes>
     <attribute name="webrootdir" value="/web" />
   </attributes>

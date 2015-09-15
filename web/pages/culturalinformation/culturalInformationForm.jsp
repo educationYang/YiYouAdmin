@@ -140,7 +140,6 @@
 					)
 					<cartmatic:iconBtn icon="cross" extraCss="negative" text="清空图片"
 						onclick="$('logoImage').src='${ctxPath}/images/default/00.jpg';$j('#logo').val('');" />
-						
 				</div>
 				<cartmatic:swf_upload btnPlaceHolderId="logoImageBtnPlaceHolderId"
 					uploadCategory="other" uploadFileTypes="*.jpg; *.jpeg; *.png; *.gif" fileInputId="logo"

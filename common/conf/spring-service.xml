@@ -1347,4 +1347,28 @@
         </property>
     </bean>
 <!-- end:  Generated for Via From Template: spring-service.xml.vm  -->
+<!-- start:  Generated for Model From Template: spring-service.xml.vm  -->
+    <bean id="modelManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.cartmatic.estore.model.service.impl.ModelManagerImpl" parent="genericManager" autowire="byName"/>
+        </property>
+    </bean>
+<!-- end:  Generated for Model From Template: spring-service.xml.vm  -->
+
+
+
+<!-- start:  Generated for ModelType From Template: spring-service.xml.vm  -->
+    <bean id="modelTypeManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.cartmatic.estore.modeltype.service.impl.ModelTypeManagerImpl" parent="genericManager" autowire="byName"/>
+        </property>
+    </bean>
+<!-- end:  Generated for ModelType From Template: spring-service.xml.vm  -->
+<!-- start:  Generated for ModelOrder From Template: spring-service.xml.vm  -->
+    <bean id="modelOrderManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.cartmatic.estore.modelorder.service.impl.ModelOrderManagerImpl" parent="genericManager" autowire="byName"/>
+        </property>
+    </bean>
+<!-- end:  Generated for ModelOrder From Template: spring-service.xml.vm  -->
 </beans>

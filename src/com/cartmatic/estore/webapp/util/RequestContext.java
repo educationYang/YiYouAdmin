@@ -195,7 +195,7 @@ public final class RequestContext
 	 * @return
 	 */
 	public static String getCurrentUserName() {
-		return getCurrentUser() != null ? getCurrentUser().getFullName()
+		return getCurrentUser() != null ? getCurrentUser().getUsername()
 				: defaultUserName;
 	}
 
@@ -206,7 +206,8 @@ public final class RequestContext
 	 * @return
 	 */
 	public static String getCurrentUserNameDefaultSystem() {
-		return getCurrentUser() != null ? getCurrentUser().getFullName()
+     //   System.out.println("name"+getCurrentUser().getUsername());
+		return getCurrentUser() != null ? getCurrentUser().getUsername()
 				: systemUserName;
 	}
 

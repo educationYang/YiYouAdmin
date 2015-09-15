@@ -1243,4 +1243,36 @@
     </bean>
     
 <!-- end:  Generated for Via From Template: spring-dao.xml.beansvm  -->
+<!-- start:  Generated for Model From Template: spring-dao.xml.beansvm  -->
+    <bean id="modelDao" class="com.cartmatic.estore.model.dao.impl.ModelDaoImpl" parent="hibernateGenericDao">
+    	<property name="searchFilters">
+    		<list>
+    			<value>default;;select s from Model s;;allow,all</value>
+    		</list>
+    	</property>
+    </bean>
+    
+<!-- end:  Generated for Model From Template: spring-dao.xml.beansvm  -->
+
+
+<!-- start:  Generated for ModelType From Template: spring-dao.xml.beansvm  -->
+    <bean id="modelTypeDao" class="com.cartmatic.estore.modeltype.dao.impl.ModelTypeDaoImpl" parent="hibernateGenericDao">
+    	<property name="searchFilters">
+    		<list>
+    			<value>default;;select s from ModelType s;;allow,all</value>
+    		</list>
+    	</property>
+    </bean>
+    
+<!-- end:  Generated for ModelType From Template: spring-dao.xml.beansvm  -->
+<!-- start:  Generated for ModelOrder From Template: spring-dao.xml.beansvm  -->
+    <bean id="modelOrderDao" class="com.cartmatic.estore.modelorder.dao.impl.ModelOrderDaoImpl" parent="hibernateGenericDao">
+    	<property name="searchFilters">
+    		<list>
+    			<value>default;;select s from ModelOrder s;;allow,all</value>
+    		</list>
+    	</property>
+    </bean>
+    
+<!-- end:  Generated for ModelOrder From Template: spring-dao.xml.beansvm  -->
 </beans>

@@ -579,7 +579,7 @@ public abstract class GenericController<T> extends BaseController {
 			HttpServletResponse response) throws Exception {
 		return view(request, response);
 	}
-
+	
 	/**
 	 * 返回上次保存的搜索结果列表。
 	 * <P>

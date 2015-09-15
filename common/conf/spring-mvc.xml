@@ -423,6 +423,18 @@
 <!-- end:  Generated for MonthlyCultural From Template: spring-mvc.xml.urlvm  -->
 
 
+<!-- start:  Generated for MonthlyCultural From Template: spring-mvc.xml.urlvm  -->
+				<prop key="/model/model.html">modelController</prop>
+<!-- end:  Generated for MonthlyCultural From Template: spring-mvc.xml.urlvm  -->
+<!-- start:  Generated for MonthlyCultural From Template: spring-mvc.xml.urlvm  -->
+				<prop key="/modelorder/modelOrder.html">modelOrderController</prop>
+<!-- end:  Generated for MonthlyCultural From Template: spring-mvc.xml.urlvm  -->
+<!-- start:  Generated for MonthlyCultural From Template: spring-mvc.xml.urlvm  -->
+				<prop key="/modeltype/modelType.html">modelTypeController</prop>
+<!-- end:  Generated for MonthlyCultural From Template: spring-mvc.xml.urlvm  -->
+
+
+
 <!-- start:  Generated for BrandDynamic From Template: spring-mvc.xml.urlvm  -->
 				<prop key="/branddynamic/brandDynamic.html">brandDynamicController</prop>
 <!-- end:  Generated for BrandDynamic From Template: spring-mvc.xml.urlvm  -->
@@ -449,6 +461,7 @@
                 
                 <prop key="/activity/award.html">awardController</prop>
                 <prop key="/activity/userAward.html">userAwardController</prop>
+
                 
 			</props>
 		</property>
@@ -1128,4 +1141,21 @@
 		<property name="viaManager" ref="viaManager"/>
 	</bean>
 <!-- end:  Generated for Via From Template: spring-mvc.xml.beansvm  -->
+<!-- start:  Generated for Model From Template: spring-mvc.xml.beansvm  -->
+	<bean id="modelController" class="com.cartmatic.estoresa.model.web.action.ModelController" parent="genericController">
+		<property name="modelManager" ref="modelManager"/>
+	</bean>
+<!-- end:  Generated for Model From Template: spring-mvc.xml.beansvm  -->
+
+
+<!-- start:  Generated for ModelType From Template: spring-mvc.xml.beansvm  -->
+	<bean id="modelTypeController" class="com.cartmatic.estoresa.modeltype.web.action.ModelTypeController" parent="genericController">
+		<property name="modelTypeManager" ref="modelTypeManager"/>
+	</bean>
+<!-- end:  Generated for ModelType From Template: spring-mvc.xml.beansvm  -->
+<!-- start:  Generated for ModelOrder From Template: spring-mvc.xml.beansvm  -->
+	<bean id="modelOrderController" class="com.cartmatic.estoresa.modelorder.web.action.ModelOrderController" parent="genericController">
+		<property name="modelOrderManager" ref="modelOrderManager"/>
+	</bean>
+<!-- end:  Generated for ModelOrder From Template: spring-mvc.xml.beansvm  -->
 </beans>

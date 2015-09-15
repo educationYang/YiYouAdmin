@@ -10,18 +10,35 @@
 		<Menu name="MainMenu" title="mainMenu.title" page="/index.html"
 			width="90">
 		</Menu>
+
+			<Menu name="modelMenu" title="menu.viewmodelMenu" description="View modelMenu" roles="admin" width="120" page="/model/model.html">
+<!-- start:  Generated for Model From Template: menu-config.xml.vm  -->
+			<Item name="ModelsMenu" title="menu.viewModels" page="/model/model.html"/>
+<!-- end:  Generated for Model From Template: menu-config.xml.vm  -->
+		<!--end of model menu items-->
+		</Menu>
+		<Menu name="modelOrderMenu" title="menu.viewmodelOrderMenu" description="View modelOrderMenu" roles="admin" width="120" page="/modelorder/modelOrder.html">
+<!-- start:  Generated for ModelOrder From Template: menu-config.xml.vm  -->
+			<Item name="ModelOrdersMenu" title="menu.viewModelOrders" page="/modelorder/modelOrder.html"/>
+<!-- end:  Generated for ModelOrder From Template: menu-config.xml.vm  -->
+		<!--end of modelOrder menu items-->
+		</Menu>
+		<Menu name="modelTypeMenu" title="menu.viewmodelTypeMenu" description="View modelTypeMenu" roles="admin" width="120" page="/modeltype/modelType.html">
+<!-- start:  Generated for ModelType From Template: menu-config.xml.vm  -->
+			<Item name="ModelTypesMenu" title="menu.viewModelTypes" page="/modeltype/modelType.html"/>
+<!-- end:  Generated for ModelType From Template: menu-config.xml.vm  -->
+		<!--end of modelType menu items-->
+		</Menu>
+
+
+
 		<Menu name="salesMenu" title="menu.viewsalesMenu" description="View salesMenu"
 			width="120" page="/sales/index.html">
-
 			<Item name="PromoRulesMenu" title="menu.viewPromoRules" page="/sales/promoRule.html" />
 			<Item name="SekillProductsMenu" title="menu.viewSekillProducts"
 				page="/sekillproduct/sekillProduct.html" />
 		</Menu>
-		<Menu name="catalogMenu" title="menu.viewcatalogMenu"
-			description="View catalogMenu" width="120" page="/catalog/index.html">
-			<Item name="CatalogsMenu" title="menu.viewCatalogs" page="/catalog/catalog.html" />
-			<Item name="BrandsMenu" title="menu.viewBrands" page="/catalog/brand.html" />
-		</Menu>
+
 		<Menu name="customerMenu" title="menu.viewcustomerMenu"
 			description="View customerMenu" width="120" page="/customer/index.html">
 			<Item name="CustomersMenu" title="menu.viewCustomers"
@@ -101,5 +118,23 @@
 		</Menu>
 
 
-	</Menus>
+	<Menu name="modelMenu" title="menu.viewmodelMenu" description="View modelMenu" roles="admin" width="120" page="/model/index.html">
+<!-- start:  Generated for Model From Template: menu-config.xml.vm  -->
+			<Item name="ModelsMenu" title="menu.viewModels" page="/model/model.html"/>
+<!-- end:  Generated for Model From Template: menu-config.xml.vm  -->
+		<!--end of model menu items-->
+		</Menu>
+		<Menu name="modelOrderMenu" title="menu.viewmodelOrderMenu" description="View modelOrderMenu" roles="admin" width="120" page="/modelOrder/index.html">
+<!-- start:  Generated for ModelOrder From Template: menu-config.xml.vm  -->
+			<Item name="ModelOrdersMenu" title="menu.viewModelOrders" page="/modelorder/modelOrder.html"/>
+<!-- end:  Generated for ModelOrder From Template: menu-config.xml.vm  -->
+		<!--end of modelOrder menu items-->
+		</Menu>
+		<Menu name="modelTypeMenu" title="menu.viewmodelTypeMenu" description="View modelTypeMenu" roles="admin" width="120" page="/modelType/index.html">
+<!-- start:  Generated for ModelType From Template: menu-config.xml.vm  -->
+			<Item name="ModelTypesMenu" title="menu.viewModelTypes" page="/modeltype/modelType.html"/>
+<!-- end:  Generated for ModelType From Template: menu-config.xml.vm  -->
+		<!--end of modelType menu items-->
+		</Menu>
+</Menus>
 </MenuConfig>

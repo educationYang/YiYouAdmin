@@ -4500,5 +4500,237 @@
 			</field>
 		</form>
 <!-- end:  Generated for Via From Template: validation.xml.vm  -->
+<!-- start:  Generated for Model From Template: validation.xml.vm  -->
+		<form name="model">
+			<field property="name" depends="maxlength">
+				<arg position="0" key="model.name" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>64</var-value>
+				</var>
+			</field>
+			<field property="state" depends="required,integer">
+				<arg position="0" key="model.state" />
+			</field>
+			<field property="choiceNum" depends="required,integer">
+				<arg position="0" key="model.choiceNum" />
+			</field>
+			<field property="writer" depends="maxlength">
+				<arg position="0" key="model.writer" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+			</field>
+			<field property="remarks" depends="maxlength">
+				<arg position="0" key="model.remarks" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>220</var-value>
+				</var>
+			</field>
+			<field property="barOne" depends="maxlength">
+				<arg position="0" key="model.barOne" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+			</field>
+			<field property="barTwo" depends="maxlength">
+				<arg position="0" key="model.barTwo" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+			</field>
+			<field property="barThree" depends="maxlength">
+				<arg position="0" key="model.barThree" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>321</var-value>
+				</var>
+			</field>
+		</form>
+<!-- end:  Generated for Model From Template: validation.xml.vm  -->
+<!-- start:  Generated for ModelOrder From Template: validation.xml.vm  -->
+		<form name="modelOrder">
+			<field property="ordernum" depends="maxlength">
+				<arg position="0" key="modelOrder.ordernum" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="orderState" depends="integer">
+				<arg position="0" key="modelOrder.orderState" />
+			</field>
+			<field property="checkState" depends="integer">
+				<arg position="0" key="modelOrder.checkState" />
+			</field>
+			<field property="remarks" depends="maxlength">
+				<arg position="0" key="modelOrder.remarks" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>220</var-value>
+				</var>
+			</field>
+			<field property="bara" depends="maxlength">
+				<arg position="0" key="modelOrder.bara" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="barb" depends="maxlength">
+				<arg position="0" key="modelOrder.barb" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="barc" depends="maxlength">
+				<arg position="0" key="modelOrder.barc" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="bard" depends="maxlength">
+				<arg position="0" key="modelOrder.bard" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="bare" depends="maxlength">
+				<arg position="0" key="modelOrder.bare" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="barf" depends="maxlength">
+				<arg position="0" key="modelOrder.barf" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="barg" depends="maxlength">
+				<arg position="0" key="modelOrder.barg" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="barh" depends="maxlength">
+				<arg position="0" key="modelOrder.barh" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="bari" depends="maxlength">
+				<arg position="0" key="modelOrder.bari" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="barj" depends="maxlength">
+				<arg position="0" key="modelOrder.barj" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="bark" depends="maxlength">
+				<arg position="0" key="modelOrder.bark" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+			<field property="barl" depends="maxlength">
+				<arg position="0" key="modelOrder.barl" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>65535</var-value>
+				</var>
+			</field>
+		</form>
+<!-- end:  Generated for ModelOrder From Template: validation.xml.vm  -->
+<!-- start:  Generated for ModelType From Template: validation.xml.vm  -->
+		<form name="modelType">
+			<field property="name" depends="maxlength">
+				<arg position="0" key="modelType.name" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+			</field>
+			<field property="writer" depends="maxlength">
+				<arg position="0" key="modelType.writer" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+			</field>
+			<field property="remarks" depends="maxlength">
+				<arg position="0" key="modelType.remarks" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>220</var-value>
+				</var>
+			</field>
+			<field property="barOne" depends="maxlength">
+				<arg position="0" key="modelType.barOne" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>220</var-value>
+				</var>
+			</field>
+			<field property="barTwo" depends="maxlength">
+				<arg position="0" key="modelType.barTwo" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>220</var-value>
+				</var>
+			</field>
+			<field property="barThree" depends="maxlength">
+				<arg position="0" key="modelType.barThree" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>220</var-value>
+				</var>
+			</field>
+		</form>
+<!-- end:  Generated for ModelType From Template: validation.xml.vm  -->
 </formset>
 </form-validation>

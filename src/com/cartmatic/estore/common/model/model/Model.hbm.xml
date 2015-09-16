@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="com.cartmatic.estore.common.model.model.Model"
+        table="model"
+        select-before-update="false"
+        dynamic-update="false"
+        dynamic-insert="false"
+        optimistic-lock="version"
+    >
+		<id
+            name="modelId"
+            column="modelId"
+            type="java.lang.Integer"
+            length="10"
+        >
+            <generator class="native"/>
+        </id>
+         <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="name"
+            length="64"
+            not-null="false"
+            unique="false"
+        />
+          <property
+            name="imga"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="imga"
+            length="255"
+            not-null="false"
+            unique="false"
+        />
+          <property
+            name="imgb"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="imgb"
+            length="255"
+            not-null="false"
+            unique="false"
+        />
+          <property
+            name="imgc"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="imgc"
+            length="255"
+            not-null="false"
+            unique="false"
+        />
+            <property
+            name="createTime"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="createTime"
+            length="0"
+            not-null="false"
+            unique="false"
+        />
+        <property
+            name="state"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="state"
+            length="10"
+            not-null="true"
+            unique="false"
+        />
+        <property
+            name="choiceNum"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="choiceNum"
+            length="10"
+            not-null="true"
+            unique="false"
+        />
+        <property
+            name="writer"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="writer"
+            length="32"
+            not-null="false"
+            unique="false"
+        />
+        <property
+            name="remarks"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="remarks"
+            length="220"
+            not-null="false"
+            unique="false"
+        />
+        <property
+            name="barOne"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="barOne"
+            length="32"
+            not-null="false"
+            unique="false"
+        />
+        <property
+            name="barTwo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="barTwo"
+            length="32"
+            not-null="false"
+            unique="false"
+        />
+        <property
+            name="barThree"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="barThree"
+            length="321"
+            not-null="false"
+            unique="false"
+        />
+        <!-- imported bi-directional many-to-one association to Brand -->
+		<many-to-one name="modelType" class=" com.cartmatic.estore.common.model.modeltype.ModelType" not-null="false" fetch="select">
+			<column name="modelTypeId" />
+		</many-to-one>
+		
+	   <!-- exported bi-directional one-to-many association to Product -->
+		<set name="modelOrders" table="model_order" lazy="true" inverse="true" cascade="save-update" order-by="modelOrderId desc" where="status=1">
+			<key>
+				<column name="modelId" />
+			</key>
+			<one-to-many class="com.cartmatic.estore.common.model.modelorder.ModelOrder" />
+		</set>
+		
+
+		
+     </class>
+</hibernate-mapping>

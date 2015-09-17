@@ -44,9 +44,9 @@
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelType.name"/>
 		    <display:column property="writer" sortable="false" headerClass="data-table-title"
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelType.writer"/>
-		    <display:column property="modelId" sortable="false" headerClass="data-table-title"
+		    <%--<display:column property="modelId" sortable="false" headerClass="data-table-title"
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelType.modelId"/>
-		    <display:column property="remarks" sortable="false" headerClass="data-table-title"
+		    --%><display:column property="remarks" sortable="false" headerClass="data-table-title"
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelType.remarks"/><%--
 		    <display:column property="barOne" sortable="false" headerClass="data-table-title"
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelType.barOne"/>

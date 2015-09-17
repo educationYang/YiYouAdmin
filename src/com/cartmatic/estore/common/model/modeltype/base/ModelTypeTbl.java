@@ -24,6 +24,7 @@ public class ModelTypeTbl extends BaseObject implements Serializable {
 	protected String barOne;
 	protected String barTwo;
 	protected String barThree;
+	
 	protected java.util.Set models = new java.util.HashSet();
 	
 

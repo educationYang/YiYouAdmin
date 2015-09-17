@@ -88,6 +88,7 @@
             not-null="false"
             unique="false"
         />
+        
         <property
             name="barThree"
             type="java.lang.String"
@@ -99,12 +100,14 @@
             not-null="false"
             unique="false"
         />
-	<!-- exported bi-directional one-to-many association to Product -->
+        
+        
+	  <!-- exported bi-directional one-to-many association to Product -->
 		<set name="models" table="model" lazy="true" inverse="true" cascade="save-update" order-by="modelId desc" where="status=1">
 			<key>
 				<column name="modelTypeId" />
 			</key>
-			<one-to-many class="com.cartmatic.estore.common.model.model" />
+			<one-to-many class="com.cartmatic.estore.common.model.model.Model" />
 		</set>
 		
     </class>

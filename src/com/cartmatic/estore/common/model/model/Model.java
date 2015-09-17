@@ -34,7 +34,7 @@ public class Model extends ModelTbl {
 		 Integer in_modelId
 		) {
 		super (
-		  in_modelId
+		     in_modelId
 		);
 	}
 

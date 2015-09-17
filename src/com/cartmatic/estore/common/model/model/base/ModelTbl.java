@@ -32,11 +32,22 @@ public class ModelTbl extends BaseObject implements Serializable {
 	protected String imgb;
 	protected String imgc;
 	
-	protected ModelType modeltype;
+	
+	
+	protected com.cartmatic.estore.common.model.modeltype.ModelType modelType;
 	
 	protected java.util.Set modelOrders = new java.util.HashSet();
 	
 
+	
+	/**
+	 * Default Empty Constructor for class ModelOrder
+	 */
+	public ModelTbl () {
+		super();
+	}
+	
+	
 	public java.util.Set getModelOrders() {
 		return modelOrders;
 	}
@@ -45,13 +56,15 @@ public class ModelTbl extends BaseObject implements Serializable {
 		this.modelOrders = modelOrders;
 	}
 
-	public ModelType getModeltype() {
-		return modeltype;
+	public com.cartmatic.estore.common.model.modeltype.ModelType getModelType() {
+		return modelType;
 	}
 
-	public void setModeltype(ModelType modeltype) {
-		this.modeltype = modeltype;
+
+	public void setModelType(com.cartmatic.estore.common.model.modeltype.ModelType modelType) {
+		this.modelType = modelType;
 	}
+
 
 	public String getImga() {
 		return imga;
@@ -85,21 +98,6 @@ public class ModelTbl extends BaseObject implements Serializable {
 		this.createTime = createTime;
 	}
 
-	/**
-	 * Default Empty Constructor for class Model
-	 */
-	public ModelTbl () {
-		super();
-	}
-	
-	/**
-	 * Default Key Fields Constructor for class Model
-	 */
-	public ModelTbl (
-		 Integer in_modelId
-        ) {
-		this.setModelId(in_modelId);
-    }
 
     
 
@@ -218,6 +216,17 @@ public class ModelTbl extends BaseObject implements Serializable {
 		return this.barTwo;
 	}
 	
+	
+	/**
+	 * Default Key Fields Constructor for class ModelOrder
+	 */
+	public ModelTbl (
+		 Integer in_modelId
+        ) {
+		this.setModelId(in_modelId);
+    }
+	
+	
 	/**
 	 * Set the barTwo
 	 */	
@@ -278,6 +287,8 @@ public class ModelTbl extends BaseObject implements Serializable {
 				.append(this.imga)
 				.append(this.imgb)
 				.append(this.imgc)
+				.append(this.imgc)
+				.append(this.modelType)
 				.toHashCode();
 	}
 
@@ -297,22 +308,7 @@ public class ModelTbl extends BaseObject implements Serializable {
 				.append("barThree", this.barThree)
 				.append("imga", this.imga) 
 				.append("imgb", this.imgb) 
-				.append("imgc", this.imgc) 
+				.append("modeltype", this.modelType) 
 				.toString();
 	}
-
-	/**
-	 * Return the name of the first key column
-	 */
-	public String getFirstKeyColumnName() {
-		return "modelId";
-	}
-	
-	/**
-	 * Return the Id (pk) of the entity, must be Integer
-	 */
-	public Integer getId() {
-		return modelId;
-	}
-
 }

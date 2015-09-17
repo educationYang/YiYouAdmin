@@ -153,10 +153,18 @@
             not-null="false"
             unique="false"
         />
-        <!-- imported bi-directional many-to-one association to Brand -->
-		<many-to-one name="modelType" class=" com.cartmatic.estore.common.model.modeltype.ModelType" not-null="false" fetch="select">
+	
+		
+		<!-- imported bi-directional many-to-one association to Model -->
+		<many-to-one
+			name="modelType"
+			class="com.cartmatic.estore.common.model.modeltype.ModelType"
+            not-null="false"
+			fetch="select"
+		>	
 			<column name="modelTypeId" />
 		</many-to-one>
+		
 		
 	   <!-- exported bi-directional one-to-many association to Product -->
 		<set name="modelOrders" table="model_order" lazy="true" inverse="true" cascade="save-update" order-by="modelOrderId desc" where="status=1">

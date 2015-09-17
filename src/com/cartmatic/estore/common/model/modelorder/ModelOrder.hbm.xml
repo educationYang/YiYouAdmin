@@ -208,6 +208,7 @@
             not-null="false"
             unique="false"
         />
+        
      <!-- imported bi-directional many-to-one association to Model -->
 		<many-to-one
 			name="model"
@@ -218,6 +219,5 @@
 			<column name="modelId" />
 		</many-to-one>
 
-		
     </class>
 </hibernate-mapping>

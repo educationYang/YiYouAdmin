@@ -449,6 +449,8 @@
                 <prop key="/selector/culturalSelector.html">culturalSelectorController</prop>
                 <prop key="/selector/culturalSelectorDataList.html">culturalSelectorController</prop>
                 
+                <prop key="/selector/modelSelector.html">modelSelectorController</prop>
+                <prop key="/selector/modelSelectorDataList.html">modelSelectorController</prop>
                 
                 <prop key="/selector/talentShowSelector.html">talentShowSelectorController</prop>
                 <prop key="/selector/talentShowSelectorDataList.html">talentShowSelectorController</prop>
@@ -1020,6 +1022,12 @@
 	<bean id="culturalSelectorController" class="com.cartmatic.estoresa.culturalinformation.web.action.CulturalSelectorController" parent="genericController" autowire="byName">
         <property name="lastSearchViewAllowed" value="false"></property>
 	</bean>
+	
+	<bean id="modelSelectorController" class="com.cartmatic.estoresa.model.web.action.ModelSelectorController" parent="genericController" autowire="byName">
+        <property name="lastSearchViewAllowed" value="false"></property>
+	</bean>
+	
+	
 	
 	<bean id="talentShowSelectorController" class="com.cartmatic.estoresa.talentmanager.web.action.TalentShowSelectorController" parent="genericController" autowire="byName">
         <property name="lastSearchViewAllowed" value="false"></property>

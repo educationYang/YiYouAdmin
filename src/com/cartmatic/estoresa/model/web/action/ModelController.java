@@ -1,20 +1,42 @@
 package com.cartmatic.estoresa.model.web.action;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.validation.BindException;
-import com.cartmatic.estore.webapp.util.RequestContext;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.cartmatic.estore.core.controller.GenericController;
+import com.cartmatic.estore.common.model.culturalinformation.CulturalInformation;
 import com.cartmatic.estore.common.model.model.Model;
+import com.cartmatic.estore.common.model.modeltype.ModelType;
+import com.cartmatic.estore.common.model.monthlycultural.MonthlyCultural;
+import com.cartmatic.estore.core.controller.GenericController;
 import com.cartmatic.estore.model.service.ModelManager;
+import com.cartmatic.estore.modeltype.service.ModelTypeManager;
 
 public class ModelController extends GenericController<Model> {
+	
     private ModelManager modelManager = null;
+    
+    private ModelTypeManager modelTypeManager = null;
 
-    public void setModelManager(ModelManager inMgr) {
+
+    public ModelTypeManager getModelTypeManager() {
+		return modelTypeManager;
+	}
+
+	public void setModelTypeManager(ModelTypeManager modelTypeManager) {
+		this.modelTypeManager = modelTypeManager;
+	}
+
+	public ModelManager getModelManager() {
+		return modelManager;
+	}
+
+	public void setModelManager(ModelManager inMgr) {
         this.modelManager = inMgr;
     }
 
@@ -51,6 +73,23 @@ public class ModelController extends GenericController<Model> {
 	protected void initController() throws Exception {
 		mgr = modelManager;
 	}
+	
+	/**
+	 * showFrom时调用,可以重载这个方法在mv上加入一些新的元素，补充重写进入表单的方法,例如编辑，
+	 * 主要获取推荐资讯的数据还有该文化资讯的月刊
+	 * @param request
+	 * @param mv
+	 */
+	protected void onShowForm(HttpServletRequest request, ModelAndView mv)
+	{
+		try{
+			List<ModelType>modelTypeList =new ArrayList(modelTypeManager.getAll());
+			mv.addObject("modelTypeList", modelTypeList);
+		}
+		catch(Exception e){
+			System.out.println("获取模板类型数据！");
+		}
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -59,7 +98,12 @@ public class ModelController extends GenericController<Model> {
 	 *      java.lang.Object, org.springframework.validation.BindException)
 	 */
 	protected void onSave(HttpServletRequest request, Model entity, BindException errors) {
-		entity.setWriter(RequestContext.getCurrentUserName());
+		try{
+			String id = request.getParameter("modelTypeId");
+			ModelType modelType = modelTypeManager.getById(Integer.parseInt(id));
+			entity.setModelType(modelType);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
-
 }

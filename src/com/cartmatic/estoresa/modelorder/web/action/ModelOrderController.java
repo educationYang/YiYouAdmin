@@ -6,13 +6,28 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.validation.BindException;
 
-import com.cartmatic.estore.core.controller.GenericController;
+import com.cartmatic.estore.common.model.model.Model;
 import com.cartmatic.estore.common.model.modelorder.ModelOrder;
+import com.cartmatic.estore.core.controller.GenericController;
+import com.cartmatic.estore.model.service.ModelManager;
 import com.cartmatic.estore.modelorder.service.ModelOrderManager;
 
 public class ModelOrderController extends GenericController<ModelOrder> {
-    private ModelOrderManager modelOrderManager = null;
+    
+	private ModelOrderManager modelOrderManager = null;
+	
+    private ModelManager modelManager =null;
+    
+	public ModelManager getModelManager() {
+		return modelManager;
+	}
 
+
+	public void setModelManager(ModelManager modelManager) {
+		this.modelManager = modelManager;
+	}
+
+	
     public void setModelOrderManager(ModelOrderManager inMgr) {
         this.modelOrderManager = inMgr;
     }
@@ -57,8 +72,16 @@ public class ModelOrderController extends GenericController<ModelOrder> {
 	 * @see com.cartmatic.estore.core.controller.GenericController onSave(javax.servlet.http.HttpServletRequest,
 	 *      java.lang.Object, org.springframework.validation.BindException)
 	 */
-	@Override
 	protected void onSave(HttpServletRequest request, ModelOrder entity, BindException errors) {
+		try{
+			String  modelId =request.getParameter("arrayculId");
+			System.out.println("modelId:"+modelId);
+			Model model = modelManager.getById(Integer.parseInt(modelId));
+			entity.setModel(model);
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("wrong");
+		}
 	}
 
 }

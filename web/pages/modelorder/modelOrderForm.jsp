@@ -1,5 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="model" tagdir="/WEB-INF/tags/model"%>
+
 
 <app:pageHeading entityName="${modelOrder.modelOrderName}" entityHeadingKey="modelOrderDetail.heading" />
 <content tag="buttons">
@@ -19,10 +21,10 @@
 		<table class="table-content" cellSpacing="0" cellPadding="0" width="100%" border="0">
 		<app:input property="ordernum" />
  		<app:formText label="common.message.createTime" value="${modelOrder.createTime}" />
-  		
+ 		
   		<tr>
 			<td class="FieldLabel">
-				订单状态：
+				网页状态：
 			</td>
 			<td>
 			  <c:choose >
@@ -50,7 +52,33 @@
 			</td>
 	    </tr>
 	    
-	    <app:input property="modelId" />
+	<tr>
+			<td class="FieldLabel">
+				选择网页模板:
+			</td>
+			<td>
+				<input id="b1" type="button" class="admin-btn" value="网页模板"
+					onclick="multiSupplierSelector_show('kkk_DIV')" />
+					
+				<input id="b2" type="button" class="admin-btn" value="清空"
+					onclick="Reset(1)" />
+					
+				<model:modelSelector  title="网页模板选择"
+					id="multiSupplierSelector" autoClose="true"
+					ondblclick="fnTestSelectMultiCulSku" multiSelect="false"></model:modelSelector>
+					
+				新已选网页模板：
+				<span id="arrayproductName"> </span>
+				<br>
+				原来网页模板：
+				<span id="arrayproductNameOld">
+				    ${modelOrder.model.name}
+				</span>
+				<input type="hidden" id="arrayculId" name="arrayculId"
+					value="" />
+			</td>
+    </tr>
+    
  		<app:input property="remarks" />
  		  <tr>
 			<td class="FieldLabel">
@@ -166,4 +194,44 @@
 <v:javascript formName="modelOrder" staticJavascript="false" />
 <script type="text/javascript">
     document.forms["modelOrder"].elements["ordernum"].focus();
+</script>
+
+
+<script type="text/javascript" defer="defer">
+//type=1是获取访谈的，type=2是获取推荐产品的
+
+//选择器表单值重置
+function Reset(type){
+   if(type==1){
+	    $j("#arrayculId").val("");
+		$j("#arrayproductName").html("");
+	   }	
+}
+
+
+//选择器值设置表单准备提交
+function senData(arrayproductId, arrayproductName,type) {
+//	alert("senData:"+type+":"+arrayproductId+":"+arrayproductName);
+	Reset(type);
+	if(type==1){
+		 arrayproductIdvalue=$j("#arrayculId").val();
+		 arrayproductNamevalue=$j("#arrayproductName").html();
+		}
+	 if(type==1){
+		 $j("#arrayculId").val(arrayproductIdvalue+arrayproductId);
+			$j("#arrayproductName").html(arrayproductNamevalue+arrayproductName);
+		}
+
+}
+
+//选择器值函数回调（文化）
+function fnTestSelectMultiCulSku(productSku) {
+	var arrayproductId ="";
+	var arrayproductName = "";
+	arrayproductId = productSku.modelId;
+	arrayproductName = productSku.name;
+	senData(arrayproductId, arrayproductName,1);
+}
+
+
 </script>

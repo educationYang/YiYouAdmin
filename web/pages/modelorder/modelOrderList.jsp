@@ -67,13 +67,22 @@
 			</display:column>
 		    <display:column property="createTime" sortable="false" headerClass="data-table-title"
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelOrder.createTime"/>
-		    <display:column property="modelId" sortable="false" headerClass="data-table-title"
+        		
+        <%--play:column property="modelId" sortable="false" headerClass="data-table-title"
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelOrder.modelId"/>
-		    <display:column property="remarks" sortable="false" headerClass="data-table-title"
+        	 --%><display:column property="remarks" sortable="false" headerClass="data-table-title"
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelOrder.remarks"/>
         		
-       
-        		<display:column sortable="true" 
+            <display:column sortable="true" 
+				decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" title="模板名称">
+			     ${modelOrderItem.model.name}
+			</display:column>
+			<display:column sortable="true" 
+				decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" title="模板编号">
+			     ${modelOrderItem.model.modelId}
+			</display:column>
+			
+           <display:column sortable="true" 
 				decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelOrder.orderState">
 				<c:choose >
 				  <c:when test="${modelOrderItem.orderState==0}"><font color="orange">完成</font></c:when>
@@ -85,7 +94,7 @@
 				</c:choose>
 			</display:column>
         		
-        		<display:column sortable="true" 
+          <display:column sortable="true" 
 				decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelOrder.checkState">
 				<c:choose >
 				  <c:when test="${modelOrderItem.checkState==0}"><font color="green">已审</font></c:when>

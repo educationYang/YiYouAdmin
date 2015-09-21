@@ -18,9 +18,10 @@
 		<input type="hidden" name="modelId" value="${model.modelId}"/> 
 		<table class="table-content" cellSpacing="0" cellPadding="0" width="100%" border="0">
 		<app:input property="name" />
-		<tr>
+		
+		<tr <c:if test="${!empty model}"> style="display:none"</c:if>>
 			<td class="FieldLabel">
-				状态：
+				${empty model}状态：
 			</td>
 			<td>
 				激活
@@ -31,6 +32,8 @@
 					<c:if test="${model.state==1}" >checked</c:if>>
 			</td>
 		</tr>
+		
+		<c:if test="${empty model}">
  		<tr>
 			<td class="FieldLabel">
 				已被用次数 (*):
@@ -39,13 +42,14 @@
 				${model.choiceNum}
 			</td>
 	    </tr>
+	    </c:if>
 	    
  		  <tr>
 			<td class="FieldLabel">
 				文案：
 			</td>
 			<td>
-				<textarea id="remarks" name="remarks" rows="4" cols="80" class="Field400">${model.remarks}</textarea>
+				<textarea id="remarks" name="remarks" rows="12" cols="120" class="Field400">${model.remarks}</textarea>
 			</td>
 	    </tr>
  		<app:formText label="common.message.createTime" value="${model.createTime}" />
@@ -59,7 +63,22 @@
 			</td>
 	    </tr>
 	    
-	    		<tr>
+	    
+	    <tr>
+			<td class="FieldLabel">
+				模板类型选择：
+			</td>
+			<td>
+			 <select name="modelTypeId" >
+				 <c:forEach items="${modelTypeList}" var="modelType" varStatus="status">
+				   <option value="${modelType.modelTypeId}">${modelType.name}</option>
+				 </c:forEach>
+			 </select>
+			</td>
+	    </tr>
+	    
+	    
+	    <tr>
 			<td class="FieldLabel">
 			  模板截图介绍一:
 			</td>

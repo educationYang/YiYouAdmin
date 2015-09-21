@@ -1,5 +1,7 @@
 package com.cartmatic.estore.common.model.model;
 
+import net.sf.json.JSONObject;
+
 import com.cartmatic.estore.common.model.model.base.ModelTbl;
 
 /**
@@ -26,6 +28,23 @@ public class Model extends ModelTbl {
 			//如：product的VO就用product.productName
 	        return this.name;
 	}
+	
+	
+	
+	/**
+	 * 构建简单的Json对象主要用于选择器
+	 * @return
+	 */
+	public String getJsonObject(){
+		JSONObject jsonSupplier=new JSONObject();
+	//	jsonSupplier.put("culturalInformationId",this.culturalInformationId);
+		jsonSupplier.put("modelId",this.modelId);
+		jsonSupplier.put("name",this.name);
+		jsonSupplier.put("remarks", this.remarks);
+		jsonSupplier.put("imga", this.imga);
+		return jsonSupplier.toString();
+	}
+	
 	
 	/**
 	 * Default Key Fields Constructor for class Model

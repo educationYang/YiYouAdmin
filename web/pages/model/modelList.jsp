@@ -76,6 +76,12 @@
   				</c:otherwise> 
 				</c:choose>
 			</display:column>
+			
+			<display:column sortable="false" 
+				decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" title="模板类型">
+				${modelItem.modelType.name}
+			</display:column>
+			
 		    <display:column property="choiceNum" sortable="true" headerClass="data-table-title" 
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="model.choiceNum"/>
         	<display:column property="createTime" sortable="true" headerClass="data-table-title"

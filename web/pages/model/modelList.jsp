@@ -33,6 +33,18 @@
 							<option value="1" <c:if test="${param['COL@s.state@Integer@EQ'] ==1}">selected="selected" </c:if>>非激活</option>
 						</select>
 					</div>
+					
+					
+		<div class="title">模板类型查询</div>
+			<div>
+				 <select name="COL@s.modelType.modelTypeId@Integer@EQ" >
+				     <option value="">所有</option>
+					 <c:forEach items="${modelTypeList}" var="modelType" varStatus="status">
+					   <option value="${modelType.modelTypeId}" <c:if test="${modelType.modelTypeId ==param['COL@s.modelType.modelTypeId@Integer@EQ'] }">selected="selected"</c:if>>${modelType.name}</option>
+					 </c:forEach>
+				 </select>
+			</div>
+					
 				<div class="title">创建时间</div>
 					<div>
 						从
@@ -88,9 +100,13 @@
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="model.createTime" />
 		    <display:column property="writer" sortable="false" headerClass="data-table-title"
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="model.writer"/>
-		    <display:column property="remarks" sortable="false" headerClass="data-table-title"
-        		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="model.remarks"/>
-            <display:column sortable="false" url="${editURLPath}" paramId="modelId" paramProperty="modelId" title="模板截图"
+            
+            <display:column sortable="false" 
+				decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" title="备注(鼠标移上去可看见全部)">
+				<span title="${modelItem.remarks}"><c:out value="${fn:substring(modelItem.remarks, 0, 20)}......" /> </span>
+			</display:column>
+	
+            <display:column sortable="false" url="${editURLPath}" paramId="modelId" paramProperty="modelId" title="最终成效图"
 				decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="">
 				<cartmatic:img isUrlOnly="false" url="${modelItem.imga}" mediaType="other" id="imga" height="200" width="150"></cartmatic:img>
 			</display:column>

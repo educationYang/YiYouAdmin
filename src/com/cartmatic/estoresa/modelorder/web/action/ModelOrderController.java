@@ -11,6 +11,7 @@ import com.cartmatic.estore.common.model.modelorder.ModelOrder;
 import com.cartmatic.estore.core.controller.GenericController;
 import com.cartmatic.estore.model.service.ModelManager;
 import com.cartmatic.estore.modelorder.service.ModelOrderManager;
+import com.cartmatic.estore.webapp.util.RequestContext;
 
 public class ModelOrderController extends GenericController<ModelOrder> {
     
@@ -78,6 +79,7 @@ public class ModelOrderController extends GenericController<ModelOrder> {
 			System.out.println("modelId:"+modelId);
 			Model model = modelManager.getById(Integer.parseInt(modelId));
 			entity.setModel(model);
+			//entity.setWriter(RequestContext.getCurrentUserNameDefaultSystem());
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("wrong");

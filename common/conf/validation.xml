@@ -4513,7 +4513,7 @@
 			<field property="state" depends="required,integer">
 				<arg position="0" key="model.state" />
 			</field>
-			<field property="choiceNum" depends="required,integer">
+			<field property="choiceNum" depends="integer">
 				<arg position="0" key="model.choiceNum" />
 			</field>
 			<field property="writer" depends="maxlength">
@@ -4554,6 +4554,30 @@
 				<var>
 					<var-name>maxlength</var-name>
 					<var-value>321</var-value>
+				</var>
+			</field>
+			<field property="imga" depends="maxlength">
+				<arg position="0" key="model.imga" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="imgb" depends="maxlength">
+				<arg position="0" key="model.imgb" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="imgc" depends="maxlength">
+				<arg position="0" key="model.imgc" />
+				<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 		</form>

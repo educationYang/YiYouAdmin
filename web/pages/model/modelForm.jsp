@@ -12,6 +12,7 @@
 	</c:if>
 	<cartmatic:cartmaticBtn btnType="cancel" onclick="return fnDoCancelForm(this);" />
 </content>
+
 <app:showBindErrors bindPath="model.*" />
 	<form:form method="post" cssClass="mainForm" id="model" commandName="model"
 			action="${ctxPath}/model/model.html" onsubmit="return validateModel(this);">
@@ -19,9 +20,9 @@
 		<table class="table-content" cellSpacing="0" cellPadding="0" width="100%" border="0">
 		<app:input property="name" />
 		
-		<tr <c:if test="${!empty model}"> style="display:none"</c:if>>
+		<tr>
 			<td class="FieldLabel">
-				${empty model}状态：
+				状态：
 			</td>
 			<td>
 				激活
@@ -29,20 +30,26 @@
 					<c:if test="${model.state==0||model.state==null}" >checked</c:if>>
 				&nbsp;&nbsp;&nbsp; 非激活
 				<input type="radio" value="1" name="state"
-					<c:if test="${model.state==1}" >checked</c:if>>
+				<c:if test="${model.state==1}" >checked</c:if>>
 			</td>
 		</tr>
 		
-		<c:if test="${empty model}">
  		<tr>
 			<td class="FieldLabel">
 				已被用次数 (*):
 			</td>
 			<td>
-				${model.choiceNum}
+				<c:if test="${!empty model}">
+				  <input type="hidden" value="0" name="choiceNum" /> 
+				  0
+				</c:if>
+				
+				<c:if test="${empty model}">
+				  ${model.choiceNum}
+				</c:if>
 			</td>
 	    </tr>
-	    </c:if>
+	   
 	    
  		  <tr>
 			<td class="FieldLabel">
@@ -71,7 +78,7 @@
 			<td>
 			 <select name="modelTypeId" >
 				 <c:forEach items="${modelTypeList}" var="modelType" varStatus="status">
-				   <option value="${modelType.modelTypeId}">${modelType.name}</option>
+				   <option value="${modelType.modelTypeId}" <c:if test="${modelType.modelTypeId == model.modelType.modelTypeId}">selected="selected"</c:if>>${modelType.name}</option>
 				 </c:forEach>
 			 </select>
 			</td>
@@ -80,7 +87,7 @@
 	    
 	    <tr>
 			<td class="FieldLabel">
-			  模板截图介绍一:
+			  模板截图介绍一(请上传最终成效图):
 			</td>
 				<c:if test="${!empty  model.imga}">
 			<td>
@@ -103,10 +110,9 @@
 					uploadCategory="other" uploadFileTypes="*.jpg; *.jpeg; *.png; *.gif" fileInputId="imga"
 					previewImg="logoImagea"></cartmatic:swf_upload>
 			</td>
-			
 		</tr>
 		
-				<tr>
+		<tr>
 			<td class="FieldLabel">
 				${model.imgb}模板截图介绍二:
 			</td>

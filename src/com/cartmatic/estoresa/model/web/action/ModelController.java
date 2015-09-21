@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +18,7 @@ import com.cartmatic.estore.common.model.monthlycultural.MonthlyCultural;
 import com.cartmatic.estore.core.controller.GenericController;
 import com.cartmatic.estore.model.service.ModelManager;
 import com.cartmatic.estore.modeltype.service.ModelTypeManager;
+import com.cartmatic.estore.webapp.util.RequestContext;
 
 public class ModelController extends GenericController<Model> {
 	
@@ -64,6 +67,29 @@ public class ModelController extends GenericController<Model> {
 		throw new RuntimeException("Not implemented yet!");
 	}
 
+	
+	/**
+	 * 缺省Action,列出缺省搜索条件的搜索结果列表。必须转给search处理。
+	 * 
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws ServletException
+	 */
+	public ModelAndView defaultAction(HttpServletRequest request,
+			HttpServletResponse response) {
+		try{
+			List<ModelType>modelTypeList =new ArrayList(modelTypeManager.getAll());
+			request.setAttribute("modelTypeList", modelTypeList);
+		}
+		catch(Exception e){
+			System.out.println("获取模板类型数据！");
+		}
+		return search(request, response);
+	}
+
+	
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -102,6 +128,7 @@ public class ModelController extends GenericController<Model> {
 			String id = request.getParameter("modelTypeId");
 			ModelType modelType = modelTypeManager.getById(Integer.parseInt(id));
 			entity.setModelType(modelType);
+			entity.setWriter(RequestContext.getCurrentUserNameDefaultSystem());
 		}catch(Exception e){
 			e.printStackTrace();
 		}

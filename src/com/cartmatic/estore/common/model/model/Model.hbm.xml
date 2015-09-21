@@ -32,50 +32,6 @@
             not-null="false"
             unique="false"
         />
-          <property
-            name="imga"
-            type="java.lang.String"
-            update="true"
-            insert="true"
-            access="property"
-            column="imga"
-            length="255"
-            not-null="false"
-            unique="false"
-        />
-          <property
-            name="imgb"
-            type="java.lang.String"
-            update="true"
-            insert="true"
-            access="property"
-            column="imgb"
-            length="255"
-            not-null="false"
-            unique="false"
-        />
-          <property
-            name="imgc"
-            type="java.lang.String"
-            update="true"
-            insert="true"
-            access="property"
-            column="imgc"
-            length="255"
-            not-null="false"
-            unique="false"
-        />
-            <property
-            name="createTime"
-            type="java.util.Date"
-            update="true"
-            insert="true"
-            access="property"
-            column="createTime"
-            length="0"
-            not-null="false"
-            unique="false"
-        />
         <property
             name="state"
             type="java.lang.Integer"
@@ -95,7 +51,18 @@
             access="property"
             column="choiceNum"
             length="10"
-            not-null="true"
+            not-null="false"
+            unique="false"
+        />
+        <property
+            name="createTime"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="createTime"
+            length="0"
+            not-null="false"
             unique="false"
         />
         <property
@@ -153,9 +120,40 @@
             not-null="false"
             unique="false"
         />
-	
-		
-		<!-- imported bi-directional many-to-one association to Model -->
+        <property
+            name="imga"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="imga"
+            length="255"
+            not-null="false"
+            unique="false"
+        />
+        <property
+            name="imgb"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="imgb"
+            length="255"
+            not-null="false"
+            unique="false"
+        />
+        <property
+            name="imgc"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="imgc"
+            length="255"
+            not-null="false"
+            unique="false"
+        />
+     <!-- imported bi-directional many-to-one association to ModelType -->
 		<many-to-one
 			name="modelType"
 			class="com.cartmatic.estore.common.model.modeltype.ModelType"
@@ -164,17 +162,20 @@
 		>	
 			<column name="modelTypeId" />
 		</many-to-one>
-		
-		
-	   <!-- exported bi-directional one-to-many association to Product -->
-		<set name="modelOrders" table="model_order" lazy="true" inverse="true" cascade="save-update" order-by="modelOrderId desc" where="status=1">
-			<key>
-				<column name="modelId" />
-			</key>
-			<one-to-many class="com.cartmatic.estore.common.model.modelorder.ModelOrder" />
-		</set>
-		
-
-		
-     </class>
+ <!-- exported bi-directional one-to-many association to ModelOrder -->
+	<set name="modelOrders"
+	     table="model_order"
+	     lazy="true"
+	     inverse="true"
+	     cascade="save-update"
+	     sort="unsorted"
+	>
+		<key>
+			<column name="modelId"/>
+		</key>
+		<one-to-many
+			class="com.cartmatic.estore.common.model.modelorder.ModelOrder"
+		/>
+	</set>     
+    </class>
 </hibernate-mapping>

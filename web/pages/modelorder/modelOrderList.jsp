@@ -27,12 +27,12 @@
 							<option value="2" <c:if test="${param['COL@s.orderState@Integer@EQ'] ==2}">selected="selected" </c:if>>紧急且未完！(1天时间上线)</option>
 						</select>
 					</div>
-						<div class="title">审单状态</div>
+						<div class="title">页面静态化状态</div>
 					<div>
 						<select name="COL@s.checkState@Integer@EQ" id="checkState" style="width:150px" >
 							<option value="">所有</option>
-							<option value="0" <c:if test="${param['COL@s.checkState@Integer@EQ'] ==0}">selected="selected" </c:if>>已审</option>
-							<option value="1" <c:if test="${param['COL@s.checkState@Integer@EQ'] ==1}">selected="selected" </c:if>>未审</option>
+							<option value="0" <c:if test="${param['COL@s.checkState@Integer@EQ'] ==0}">selected="selected" </c:if>>已静态化</option>
+							<option value="1" <c:if test="${param['COL@s.checkState@Integer@EQ'] ==1}">selected="selected" </c:if>>未静态化</option>
 						</select>
 					</div>
 				<div class="title">创建时间</div>
@@ -97,16 +97,20 @@
           <display:column sortable="true" 
 				decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelOrder.checkState">
 				<c:choose >
-				  <c:when test="${modelOrderItem.checkState==0}"><font color="green">已审</font></c:when>
-				  <c:when test="${modelOrderItem.checkState==1}"><font color="red">未审</font></c:when>
+				  <c:when test="${modelOrderItem.checkState==0}"><font color="green" id="${modelOrderItem.modelOrderId}">已静态化</font>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <font color="red"><a onClick="getWebPage(${modelOrderItem.modelOrderId})" >点击重新静态化</a></font>
+				  </c:when>
+				  <c:when test="${modelOrderItem.checkState==1}">
+				  <font color="red" id="${modelOrderItem.modelOrderId}">未静态化</font>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <font color="red"><a onClick="getWebPage(${modelOrderItem.modelOrderId})" >点击静态化</a></font>
+				  </c:when>
 				  <c:otherwise>   
    					<font color="red">有异常，请联系管理员<font>
   				</c:otherwise> 
 				</c:choose>
-			</display:column>
+		</display:column>
 			
-			
-        		<%--
+        <%--
 		    <display:column property="bara" sortable="false" headerClass="data-table-title"
         		decorator="com.cartmatic.estore.core.decorator.TblColumnDecorator" titleKey="modelOrder.bara"/>
 		    <display:column property="barb" sortable="false" headerClass="data-table-title"
@@ -138,4 +142,33 @@
 </form>
 <script type="text/javascript">
 highlightTableRows("modelOrderItem");
+
+function getWebPage(modelOrderId) {
+	//alert("getWebPage");
+	$j.post(__ctxPath+"/modelorder/modelOrder.html?doAction=getWebPage",{
+		id : modelOrderId
+	}, function(result) {
+		   // alert("result:"+result.status);
+			if (result.status == 1) {
+				alert("静态化页面成功！访问路径为： http://www.yiyou.space/"+result.msg);
+				setState(modelOrderId,1);
+			} else {
+				alert("静态化页面失败，请联系阿忠（15999974425）");
+				setState(modelOrderId,2);
+			}
+		}, "json");
+}
+
+function setState(modelOrderId,type) {
+  alert("setState"+modelOrderId);
+  if(type==1){
+	  $j("#"+modelOrderId).html("已静态化");
+	  }else{
+		  $j("#"+modelOrderId).html("未静态化");
+		  }
+
+}
+
+
+
 </script>

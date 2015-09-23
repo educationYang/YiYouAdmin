@@ -66,6 +66,29 @@
             unique="false"
         />
         <property
+            name="domainName"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="domainName"
+            length="50"
+            not-null="false"
+            unique="false"
+        />
+          <property
+            name="domainPath"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="domainPath"
+            length="220"
+            not-null="false"
+            unique="false"
+        />
+        
+        <property
             name="remarks"
             type="java.lang.String"
             update="true"

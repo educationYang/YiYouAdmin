@@ -3,15 +3,18 @@ package com.cartmatic.estoresa.modelorder.web.action;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.validation.BindException;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cartmatic.estore.common.model.model.Model;
 import com.cartmatic.estore.common.model.modelorder.ModelOrder;
 import com.cartmatic.estore.core.controller.GenericController;
+import com.cartmatic.estore.core.view.AjaxView;
 import com.cartmatic.estore.model.service.ModelManager;
 import com.cartmatic.estore.modelorder.service.ModelOrderManager;
-import com.cartmatic.estore.webapp.util.RequestContext;
+import com.cartmatic.extend.freemark.util.FreeMarkertUtil;
 
 public class ModelOrderController extends GenericController<ModelOrder> {
     
@@ -67,6 +70,7 @@ public class ModelOrderController extends GenericController<ModelOrder> {
 		mgr = modelOrderManager;
 	}
 
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -76,14 +80,49 @@ public class ModelOrderController extends GenericController<ModelOrder> {
 	protected void onSave(HttpServletRequest request, ModelOrder entity, BindException errors) {
 		try{
 			String  modelId =request.getParameter("arrayculId");
-			System.out.println("modelId:"+modelId);
 			Model model = modelManager.getById(Integer.parseInt(modelId));
 			entity.setModel(model);
 			//entity.setWriter(RequestContext.getCurrentUserNameDefaultSystem());
 		}catch(Exception e){
 			e.printStackTrace();
-			System.out.println("wrong");
 		}
+	}
+	
+
+	
+	/**
+	 * 功能:审单获取静态化页面,返回静态化后页面路径
+	 * <p>作者 杨荣忠 2015-9-23 上午10:16:51
+	 * @param request
+	 * @param response
+	 * @return
+	 * doAction="getWebPage"
+	 */
+	public ModelAndView getWebPage(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+        AjaxView ajaxView = new AjaxView(response);
+        Short flag = 0;
+        String msg ="";
+    	Integer id = Integer.parseInt(request.getParameter("id"));
+		ModelOrder entity = modelOrderManager.getById(id);
+        try{
+    		new FreeMarkertUtil().analysisTemplateModelOrder(entity);
+        	flag =1;
+        	msg =entity.getDomainName()+".html";
+    		//模板审单状态：0已审，1未审，2有问题
+    		entity.setCheckState(0);
+    		//模板订单状态：0完成，1未完成，2紧急且未完成（顾客要求时间1天内上距当前时间）
+    		entity.setOrderState(1);
+    		entity.setDomainPath("http://www.yiyou.space/"+entity.getDomainName());
+    		modelOrderManager.save(entity);
+        }
+          catch(Exception e)
+        {
+        	flag =0;
+        }
+          ajaxView.setStatus(flag);
+          ajaxView.setMsg(msg);
+          return ajaxView;
 	}
 
 }

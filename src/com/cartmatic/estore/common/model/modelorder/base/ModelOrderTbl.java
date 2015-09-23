@@ -22,6 +22,8 @@ public class ModelOrderTbl extends BaseObject implements Serializable {
 	protected Integer orderState;
 	protected Integer checkState;
 	protected String remarks;
+	protected String domainName;
+	protected String domainPath;
 	protected String bara;
 	protected String barb;
 	protected String barc;
@@ -36,6 +38,23 @@ public class ModelOrderTbl extends BaseObject implements Serializable {
 	protected String barl;
 	protected com.cartmatic.estore.common.model.model.Model model;
 
+
+	
+	public String getDomainPath() {
+		return domainPath;
+	}
+
+	public void setDomainPath(String domainPath) {
+		this.domainPath = domainPath;
+	}
+
+	public String getDomainName() {
+		return domainName;
+	}
+
+	public void setDomainName(String domainName) {
+		this.domainName = domainName;
+	}
 
 	/**
 	 * Default Empty Constructor for class ModelOrder

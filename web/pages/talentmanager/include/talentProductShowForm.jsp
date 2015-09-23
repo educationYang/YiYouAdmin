@@ -99,7 +99,6 @@ function fnTestSelectMultiProductSku(productSkuList) {
 }
 
 
-
 function deleteOne(productTalenShowId) {
 	$j.post(__ctxPath+"/producttalenshow/producttalenshow.html?doAction=deleteOne",{
 		productTalenShowId : productTalenShowId

@@ -19,42 +19,68 @@
 			action="${ctxPath}/modelorder/modelOrder.html" onsubmit="return validateModelOrder(this);">
 		<input type="hidden" name="modelOrderId" value="${modelOrder.modelOrderId}"/> 
 		<table class="table-content" cellSpacing="0" cellPadding="0" width="100%" border="0">
+		
 		<app:input property="ordernum" />
+		
+		<tr>
+			<td class="FieldLabel">
+				网页后缀名(注意不用加.html)：
+			</td>
+			<td>
+			 <input type="text" name="domainName" value="${modelOrder.domainName}"/>
+			</td>
+	    </tr>
+	
+	<c:if test="${modelOrder.modelOrderId!=null}">
  		<app:formText label="common.message.createTime" value="${modelOrder.createTime}" />
  		
   		<tr>
 			<td class="FieldLabel">
-				网页状态：
+				网页状态(需由淘宝人员更改)：
 			</td>
 			<td>
 			  <c:choose >
 				  <c:when test="${modelOrder.orderState==0}"><font color="orange">完成</font></c:when>
 				  <c:when test="${modelOrder.orderState==1}"><font color="blue">未完成</font></c:when>
 				  <c:when test="${modelOrder.orderState==2}"><font color="red">紧急且未完！</font></c:when>
-				  <c:otherwise>   
-   					<font color="red">有异常，请联系管理员<font>
-  				</c:otherwise> 
-				</c:choose>
-			</td>
-	    </tr>
- 			<tr>
-			<td class="FieldLabel">
-				审单状态：
-			</td>
-			<td>
-			<c:choose >
-				  <c:when test="${modelOrder.checkState==0}"><font color="green">已审</font></c:when>
-				  <c:when test="${modelOrder.checkState==1}"><font color="red">未审</font></c:when>
-				  <c:otherwise>   
-   					<font color="red">有异常，请联系管理员<font>
-  				</c:otherwise> 
 				</c:choose>
 			</td>
 	    </tr>
 	    
+ 		<tr>
+			<td class="FieldLabel">
+				是否已静态化页面：
+			</td>
+			<td>
+			<c:choose >
+				  <c:when test="${modelOrder.checkState==0}"><font color="green">已静态化</font></c:when>
+				  <c:when test="${modelOrder.checkState==1}"><font color="red">未静态化</font></c:when>
+				</c:choose>
+			</td>
+	    </tr>
+	   
+	   <c:if test="${modelOrder.checkState==0}">
+	     <tr>
+			<td class="FieldLabel">
+				静态化访问路径：
+			</td>
+			<td>
+		       <a href="${modelOrder.domainPath}">${modelOrder.domainPath}</a>
+			</td>
+	    </tr>
+	   </c:if>
+	      
+	 
+	   
+	 </c:if>
+	      
+	      <c:if test="${modelOrder.modelOrderId==null}">
+	    		  <input type="hidden" name="orderState" value="1" />
+	    		  <input type="hidden" name="checkState" value="1" />
+	      </c:if>
 	<tr>
 			<td class="FieldLabel">
-				选择网页模板:
+			选择网页模板:
 			</td>
 			<td>
 				<input id="b1" type="button" class="admin-btn" value="网页模板"
@@ -75,7 +101,7 @@
 				    ${modelOrder.model.name}
 				</span>
 				<input type="hidden" id="arrayculId" name="arrayculId"
-					value="" />
+					value="${modelOrder.model.modelId}" />
 			</td>
     </tr>
     
@@ -94,7 +120,6 @@
 			</td>
 			<td>
 			   <textarea id="bara" name="bara" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.bara}</textarea>
-			   	<app:ui_htmlEditor textareaIds="bara" />
 			</td>
 	    </tr>
     <tr>
@@ -103,7 +128,6 @@
 			</td>
 			<td>
 			   <textarea id="barb" name="barb" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.barb}</textarea>
-			   	<app:ui_htmlEditor textareaIds="barb" />
 			</td>
 	    </tr>    <tr>
 			<td class="FieldLabel">
@@ -111,7 +135,6 @@
 			</td>
 			<td>
 			   <textarea id="barc" name="barc" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.barc}</textarea>
-			   	<app:ui_htmlEditor textareaIds="barc" />
 			</td>
 	    </tr>    <tr>
 			<td class="FieldLabel">
@@ -119,15 +142,14 @@
 			</td>
 			<td>
 			   <textarea id="bard" name="bard" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.bard}</textarea>
-			   	<app:ui_htmlEditor textareaIds="bard" />
-			</td>
+			   	<%--<app:ui_htmlEditor textareaIds="bard" />
+			--%></td>
 	    </tr>    <tr>
 			<td class="FieldLabel">
 				客户信息五：
 			</td>
 			<td>
 			   <textarea id="bare" name="bare" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.bare}</textarea>
-			   	<app:ui_htmlEditor textareaIds="bare" />
 			</td>
 	    </tr>    <tr>
 			<td class="FieldLabel">
@@ -135,23 +157,21 @@
 			</td>
 			<td>
 			   <textarea id="barf" name="barf" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.barf}</textarea>
-			   	<app:ui_htmlEditor textareaIds="barf" />
 			</td>
 	    </tr>    <tr>
 			<td class="FieldLabel">
 				客户信息七：
 			</td>
 			<td>
-			   <textarea id="barg" name="barg" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.barg}</textarea>
+			   <textarea id="barg" name="barg" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.barg}</textarea><%--
 			   	<app:ui_htmlEditor textareaIds="barg" />
-			</td>
+			--%></td>
 	    </tr>    <tr>
 			<td class="FieldLabel">
 				客户信息八：
 			</td>
 			<td>
 			   <textarea id="barh" name="barh" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.barh}</textarea>
-			   	<app:ui_htmlEditor textareaIds="barh" />
 			</td>
 	    </tr>    <tr>
 			<td class="FieldLabel">
@@ -159,7 +179,6 @@
 			</td>
 			<td>
 			   <textarea id="barl" name="barl" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.barl}</textarea>
-			   	<app:ui_htmlEditor textareaIds="barl" />
 			</td>
 	    </tr>    <tr>
 			<td class="FieldLabel">
@@ -167,7 +186,6 @@
 			</td>
 			<td>
 			   <textarea id="bari" name="bari" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.bari}</textarea>
-			   	<app:ui_htmlEditor textareaIds="bari" />
 			</td>
 	    </tr>    <tr>
 			<td class="FieldLabel">
@@ -175,7 +193,6 @@
 			</td>
 			<td>
 			   <textarea id="barj" name="barj" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.barj}</textarea>
-			   	<app:ui_htmlEditor textareaIds="barj" />
 			</td>
 	    </tr>
 	     <tr>
@@ -184,7 +201,6 @@
 			</td>
 			<td>
 			   <textarea id="bark" name="bark" rows="6" cols="20" style="width: 50%; height: 230px;">${modelOrder.bark}</textarea>
-			   	<app:ui_htmlEditor textareaIds="bark" />
 			</td>
 	    </tr>
 
@@ -221,7 +237,6 @@ function senData(arrayproductId, arrayproductName,type) {
 		 $j("#arrayculId").val(arrayproductIdvalue+arrayproductId);
 			$j("#arrayproductName").html(arrayproductNamevalue+arrayproductName);
 		}
-
 }
 
 //选择器值函数回调（文化）

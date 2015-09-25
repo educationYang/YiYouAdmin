@@ -1,16 +1,19 @@
 package com.cartmatic.estoresa.modelorder.web.action;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cartmatic.estore.common.model.model.Model;
 import com.cartmatic.estore.common.model.modelorder.ModelOrder;
 import com.cartmatic.estore.core.controller.GenericController;
+import com.cartmatic.estore.core.util.CollectionUtil;
 import com.cartmatic.estore.core.view.AjaxView;
 import com.cartmatic.estore.model.service.ModelManager;
 import com.cartmatic.estore.modelorder.service.ModelOrderManager;
@@ -81,6 +84,7 @@ public class ModelOrderController extends GenericController<ModelOrder> {
 		try{
 			String  modelId =request.getParameter("arrayculId");
 			Model model = modelManager.getById(Integer.parseInt(modelId));
+			model.setChoiceNum(model.getChoiceNum()+1);
 			entity.setModel(model);
 			//entity.setWriter(RequestContext.getCurrentUserNameDefaultSystem());
 		}catch(Exception e){
@@ -113,7 +117,7 @@ public class ModelOrderController extends GenericController<ModelOrder> {
     		entity.setCheckState(0);
     		//模板订单状态：0完成，1未完成，2紧急且未完成（顾客要求时间1天内上距当前时间）
     		entity.setOrderState(1);
-    		entity.setDomainPath("http://www.yiyou.space/"+entity.getDomainName());
+    		entity.setDomainPath("http://www.yiyou.space/"+entity.getDomainName()+".html");
     		modelOrderManager.save(entity);
         }
           catch(Exception e)
@@ -123,6 +127,32 @@ public class ModelOrderController extends GenericController<ModelOrder> {
           ajaxView.setStatus(flag);
           ajaxView.setMsg(msg);
           return ajaxView;
+	}
+	
+	
+	/**
+	 * 功能:判断新生成的域名是否已存在
+	 * <p>作者 杨荣忠 2015-9-23 上午10:16:51
+	 * @param request
+	 * @param response
+	 * @return
+	 * doAction="checkDomainNameExit"
+	 */
+	public ModelAndView checkDomainNameExit(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+        AjaxView ajaxView = new AjaxView(response);
+        Short flag = 0;
+    	String  domainName = request.getParameter("domainName");
+    	List<ModelOrder> entityList = modelOrderManager.findByProperty("domainName",domainName);
+    	
+    	if(CollectionUtils.isEmpty(entityList))
+    		//为空，可以存在
+    	  flag =1;
+    	else
+    		//不为空，已存在
+    	 flag = 0;
+         ajaxView.setStatus(flag);
+         return ajaxView;
 	}
 
 }

@@ -160,7 +160,7 @@ function getWebPage(modelOrderId) {
 }
 
 function setState(modelOrderId,type) {
-  alert("setState"+modelOrderId);
+  //alert("setState"+modelOrderId);
   if(type==1){
 	  $j("#"+modelOrderId).html("已静态化");
 	  }else{

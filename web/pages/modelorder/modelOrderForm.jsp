@@ -16,7 +16,7 @@
 </content>
 <app:showBindErrors bindPath="modelOrder.*" />
 	<form:form method="post" cssClass="mainForm" id="modelOrder" commandName="modelOrder"
-			action="${ctxPath}/modelorder/modelOrder.html" onsubmit="return validateModelOrder(this);">
+			action="${ctxPath}/modelorder/modelOrder.html" onsubmit="return validateModelOrderSubmit();">
 		<input type="hidden" name="modelOrderId" value="${modelOrder.modelOrderId}"/> 
 		<table class="table-content" cellSpacing="0" cellPadding="0" width="100%" border="0">
 		
@@ -27,7 +27,7 @@
 				网页后缀名(注意不用加.html)：
 			</td>
 			<td>
-			 <input type="text" name="domainName" value="${modelOrder.domainName}"/>
+			 <input type="text" id="domainName" name="domainName" value="${modelOrder.domainName}" onblur="checkExit(${modelOrder.domainName})"/>
 			</td>
 	    </tr>
 	
@@ -69,9 +69,6 @@
 			</td>
 	    </tr>
 	   </c:if>
-	      
-	 
-	   
 	 </c:if>
 	      
 	      <c:if test="${modelOrder.modelOrderId==null}">
@@ -212,9 +209,21 @@
     document.forms["modelOrder"].elements["ordernum"].focus();
 </script>
 
-
 <script type="text/javascript" defer="defer">
-//type=1是获取访谈的，type=2是获取推荐产品的
+function validateModelOrderSubmit(){
+	 var falg = true;
+	if($j("#domainName").val().trim()==""){
+          alert("网页后缀名不能为空");
+          flag =false;
+		}
+	else if($j("#arrayculId").val().trim()==""){
+		  alert("请选择相关模板");
+		  flag =false;
+		}
+	//alert("flag:"+flag);
+	return flag;
+}
+
 
 //选择器表单值重置
 function Reset(type){
@@ -223,6 +232,25 @@ function Reset(type){
 		$j("#arrayproductName").html("");
 	   }	
 }
+
+//域名多名字检测
+function checkExit(value){
+   	var domainName=$j("#domainName").val();
+   	if(domainName!=value){
+   	 	$j.post(__ctxPath+"/modelorder/modelOrder.html?doAction=checkDomainNameExit",{
+   	 		domainName : domainName
+   		}, function(result) {
+   			   // alert("result:"+result.status);
+   				if (result.status == 0) {
+   					alert("网页后缀名已经存在");
+   					$j("#domainName").val("");
+   				} else {
+   				}
+   			}, "json");
+   	   	}
+
+}
+
 
 
 //选择器值设置表单准备提交
